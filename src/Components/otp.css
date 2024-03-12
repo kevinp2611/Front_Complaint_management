@@ -1,0 +1,146 @@
+.otp * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.otp body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+.otp .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.otp .logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.otp .logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 10px;
+}
+
+.otp h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #555;
+  text-shadow: 1px 1px #fff;
+}
+
+.otp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otp label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.otp input[type="text"] {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+  color: #555;
+  font-size: 1rem;
+}
+
+.otp button[type="submit"] {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color:#007bff;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.otp button[type="submit"]:hover {
+  background-color: #007bff;
+}
+
+.otp .resend-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.otp .resend-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease-in-out;
+}
+
+.otp .resend-link a:hover {
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .otp .container {
+    max-width: 400px;
+  }
+
+  .otp .logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .otp h1 {
+    font-size: 1.5rem;
+  }
+
+  .otp label {
+    font-size: 0.9rem;
+  }
+
+  .otp input[type="text"] {
+    font-size: 0.9rem;
+  }
+
+  .otp button[type="submit"] {
+    font-size: 0.9rem;
+  }
+
+  .otp .resend-link a {
+    font-size: 0.8rem;
+  }
+}
+.otp.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+.otp .btn:hover {
+  background: #eee;
+}
+
+.otp .success {
+  color: green;
+}
