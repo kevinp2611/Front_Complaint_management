@@ -1,22 +1,53 @@
 // import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Otp from "./Components/Otp";
+
+// import { Privateroutes } from "./Router/my_route";
+// import { Publicroutes } from "./Router/my_route";
+import Private from "./Private";
+import Public from "./Public";
 import Login from "./Components/Login";
-import Layout from "./Components/layout/Layout";
 import Dashboard from "./Components/Dashboard";
-import Complaint from "./Components/Complaint";
-import Head from "./Components/Head";
-import Admin from "./Components/Admin";
-import Maintenance from "./Components/Maintenance";
-import AdminLayout from "./Components/layout/AdminLayout";
-import Adduser from "./Components/Adduser";
-import RemoveUser from "./Components/RemoveUser";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<Private />}>
+          <Route element={<Dashboard />} path="/dashboard" />
+        </Route>
+        <Route element={<Public />}>
+          <Route element={<Login />} path="/" />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+{
+  /* <Routes>
+        <Route element={<Private />}>
+          {Privateroutes.map((route, index) => (
+            <Route
+              path={`${route.path}`}
+              Component={route.component}
+              key={index}
+            />
+          ))}
+        </Route>
+        <Route element={<Public />}>
+          {Publicroutes.map((route, index) => (
+            <Route
+              path={`${route.path}`}
+              Component={route.component}
+              key={index}
+            />
+          ))}
+        </Route> */
+}
+
+{
+  /* <Route element={<Layout />}>
           <Route path="/" element={<Login />} />
           <Route path="/otp" element={<Otp />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -28,10 +59,5 @@ function App() {
         </Route>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<Admin />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+        </Route> */
 }
-
-export default App;
