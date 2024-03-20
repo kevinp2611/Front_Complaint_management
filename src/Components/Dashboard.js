@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { POST_LOGOUT_REQUEST } from "../api/Services/Auth/auth.services";
 
 const Dashboard = () => {

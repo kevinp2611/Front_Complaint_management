@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import "./otp.css";
-
 
 const Otp = () => {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ const Otp = () => {
       <form>
         <label htmlFor="otp">Enter OTP:</label>
         <input type="text" id="otp" name="otp" required />
-        <button type="submit" onClick={() => navigate('/dashboard')}>
+        <button type="submit" onClick={() => navigate("/dashboard")}>
           Verify
         </button>
       </form>

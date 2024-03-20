@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router";
+
+import { useNavigate } from "react-router-dom";
 import { POST_LOGIN_REQUEST } from "../api/Services/Auth/auth.services";
+import roleNavigate from "../Hooks/useRolenavigate";
 
 const Login = () => {
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = e.target;
     const loginData = { email: email.value, password: password.value };
-
     POST_LOGIN_REQUEST(loginData)
       .then((res) => {
         const { accessToken } = res.data.data.user;
@@ -16,7 +16,9 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("accessToken", accessToken);
 
-        navigate("/dashboard");
+        const url = roleNavigate();
+        console.log(url);
+       navigate("/admin/dashboard")
       })
       .catch((err) => {
         if (err.response) {

@@ -1,10 +1,11 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Private = () => {
+  const navigate = useNavigate();
   const isAuthenticated = !(
     localStorage.getItem("accessToken") && localStorage.getItem("user")
   );
-
-  return isAuthenticated ? <Navigate to="/" /> : <Outlet />;
+  console.log(isAuthenticated);
+  return isAuthenticated ? navigate("/login") : <Outlet />;
 };
 export default Private;

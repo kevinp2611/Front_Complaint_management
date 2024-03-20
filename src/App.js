@@ -1,63 +1,44 @@
 // import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import Admin from "./Components/Admin";
+import Maintenance from "./Components/Maintenance";
+import Head from "./Components/facultyHead";
+import Layout from "./Components/layout/Layout";
 
 // import { Privateroutes } from "./Router/my_route";
 // import { Publicroutes } from "./Router/my_route";
-import Private from "./Private";
-import Public from "./Public";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
+const Private = lazy(() => import("./Private"));
+const Public = lazy(() => import("./Public"));
+const Login = lazy(() => import("./Components/Login"));
+const Dashboard = lazy(() => import("./Components/Dashboard"));
+const Registration = lazy(() => import("./Components/Registration"));
+const NotFoundPage = lazy(() => import("./Components/NotFoundPage"));
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Private />}>
-          <Route element={<Dashboard />} path="/dashboard" />
-        </Route>
-        <Route element={<Public />}>
-          <Route element={<Login />} path="/" />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route  element={<Layout />}>
+            <Route element={<Private />}>
+              <Route element={<Admin />} path="/admin/dashboard" />
+              <Route element={<Dashboard />} path="/user/dashboard" />
+              <Route element={<Maintenance />} path="/maintenance/dashboard" />
+              <Route element={<Head />} path="/faculty/dashboard" />
+            </Route>
+
+            <Route element={<Public />}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Navigate replace to="/login" />} />
+              <Route element={<Registration />} path="/registration" />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
 
 export default App;
-{
-  /* <Routes>
-        <Route element={<Private />}>
-          {Privateroutes.map((route, index) => (
-            <Route
-              path={`${route.path}`}
-              Component={route.component}
-              key={index}
-            />
-          ))}
-        </Route>
-        <Route element={<Public />}>
-          {Publicroutes.map((route, index) => (
-            <Route
-              path={`${route.path}`}
-              Component={route.component}
-              key={index}
-            />
-          ))}
-        </Route> */
-}
-
-{
-  /* <Route element={<Layout />}>
-          <Route path="/" element={<Login />} />
-          <Route path="/otp" element={<Otp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/complaint" element={<Complaint />} />
-          <Route path="/head" element={<Head />} />
-          <Route path="/maintenance" element={<Maintenance />} />
-          <Route path="/adduser" element={<Adduser />} />
-          <Route path="/removeuser" element={<RemoveUser />} />
-        </Route>
-        <Route element={<AdminLayout />}>
-          <Route path="/admin" element={<Admin />} />
-        </Route> */
-}
